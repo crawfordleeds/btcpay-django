@@ -4,9 +4,24 @@ version = "0.1.0"
 description = ""
 authors = ["Crawford Leeds <crawford@crawfordleeds.com>"]
 license = "MIT"
+classifiers = [
+    # Trove classifiers
+    # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"
+Django = ">=2.2"
+btcpay-python = "^1.3.0"
+django-crawfish = "^0.0.8"
 
 [tool.poetry.dev-dependencies]
 
