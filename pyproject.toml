@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "btcpay-django"
-version = "0.1.4"
+version = "0.0.0"
 description = ""
 authors = ["Crawford Leeds <crawford@crawfordleeds.com>"]
 license = "MIT"
