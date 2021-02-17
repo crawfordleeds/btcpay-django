@@ -16,7 +16,8 @@ before_script:
 
 .base_tests:
   after_script:
-      - bash <(curl -s https://codecov.io/bash)
+    - echo Hi
+#      - bash <(curl -s https://codecov.io/bash)
 
 python36:
   extends: .base_tests
