@@ -9,7 +9,8 @@ cache:
     - .pip
 before_script:
   - python --version
-  - curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+  - export POETRY_VERSION=1.1.4
+  - pip install "poetry==$POETRY_VERSION"
   - poetry install
 #  - pip --cache-dir=.pip install -e . && pip install -e '.[dev]'
 
