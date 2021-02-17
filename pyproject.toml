@@ -59,3 +59,22 @@ exclude = '''
   | venv
 )/
 '''
+
+# TOX
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py{36,37,38}-django220, py{36,37,38}-django300
+
+[testenv]
+whitelist_externals = coverage
+deps =
+    django220: Django>=2.2,<3
+    django300: Django>=3
+commands =
+    coverage run --source='btcpay_django' runtests.py
+    coverage report
+setenv =
+    COVERAGE_FILE = .coverage.{envname}
+"""
