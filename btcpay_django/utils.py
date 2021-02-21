@@ -9,3 +9,5 @@ def get_btcpay_client(host=None):
     client = BtcpayClient.objects.filter(host=host).order_by("-created_at").first()
     if not client:
         raise Exception(f"Missing BTCPay client for host {host}")
+
+    return pickle.loads(client.client)
