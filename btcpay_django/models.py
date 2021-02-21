@@ -7,13 +7,14 @@ from btcpay import BTCPayClient as BTCPayClient_sdk
 
 
 class BtcpayClient(BaseModel):
-
     class Meta:
         verbose_name = "BTCPay Client"
         verbose_name_plural = "BTCPay Clients"
 
     client = models.BinaryField(_("Pickled Client"), blank=True)
-    pairing_code = models.CharField(_("Pairing Code"), help_text="One time use pairing code",  max_length=50)
+    pairing_code = models.CharField(
+        _("Pairing Code"), help_text="One time use pairing code", max_length=50
+    )
     host = models.URLField()
 
     def save(self, *args, **kwargs):
@@ -23,14 +24,20 @@ class BtcpayClient(BaseModel):
         created = self.pk is None
 
         if created:
-            assert self.pairing_code is not None, "You must add a pairing_code to created a new BtcpayClient record"
+            assert (
+                self.pairing_code is not None
+            ), "You must add a pairing_code to created a new BtcpayClient record"
             if not self.host:
-                assert getattr(settings, "BTCPAYSERVER_HOST", None) is not None, "ADD BTCPAYSERVER_HOST to your settings or save() with non-None host"
+                assert (
+                    getattr(settings, "BTCPAYSERVER_HOST", None) is not None
+                ), "ADD BTCPAYSERVER_HOST to your settings or save() with non-None host"
                 client = BTCPayClient_sdk.create_client(
                     host=settings.BTCPAYSERVER_HOST, code=self.pairing_code
                 )
             else:
-                client = BTCPayClient_sdk.create_client(host=self.host, code=self.pairing_code)
+                client = BTCPayClient_sdk.create_client(
+                    host=self.host, code=self.pairing_code
+                )
 
             self.client = pickle.dumps(client)
         super().save(*args, **kwargs)

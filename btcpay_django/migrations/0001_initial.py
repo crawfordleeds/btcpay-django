@@ -7,23 +7,40 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='BtcpayClient',
+            name="BtcpayClient",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('client', models.BinaryField(blank=True, verbose_name='Pickled Client')),
-                ('pairing_code', models.CharField(help_text='One time use pairing code', max_length=50, verbose_name='Pairing Code')),
-                ('host', models.URLField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "client",
+                    models.BinaryField(blank=True, verbose_name="Pickled Client"),
+                ),
+                (
+                    "pairing_code",
+                    models.CharField(
+                        help_text="One time use pairing code",
+                        max_length=50,
+                        verbose_name="Pairing Code",
+                    ),
+                ),
+                ("host", models.URLField()),
             ],
             options={
-                'verbose_name': 'BTCPay Client',
-                'verbose_name_plural': 'BTCPay Clients',
+                "verbose_name": "BTCPay Client",
+                "verbose_name_plural": "BTCPay Clients",
             },
         ),
     ]
