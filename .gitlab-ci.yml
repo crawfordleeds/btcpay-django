@@ -12,7 +12,6 @@ before_script:
   - export POETRY_VERSION=1.1.4
   - pip install "poetry==$POETRY_VERSION"
   - poetry install
-#  - pip --cache-dir=.pip install -e . && pip install -e '.[dev]'
 
 .base_tests:
   after_script:
@@ -21,19 +20,19 @@ before_script:
 
 python36:
   extends: .base_tests
-  image: python:3.6
+  image: 'python:3.6'
   stage: test
   script: tox -e py36
 
 python37:
   extends: .base_tests
-  image: python:3.7
+  image: 'python:3.7'
   stage: test
   script: tox -e py37
 
 python38:
   extends: .base_tests
-  image: python:3.8
+  image: 'python:3.8'
   stage: test
   script: tox -e py38
 
