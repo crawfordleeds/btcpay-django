@@ -11,7 +11,7 @@ before_script:
   - python --version
   - export POETRY_VERSION=1.1.4
   - pip install "poetry==$POETRY_VERSION"
-  - poetry install
+  - poetry install --no-root
 
 .base_tests:
   after_script:
