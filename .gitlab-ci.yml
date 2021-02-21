@@ -19,10 +19,15 @@ before_script:
 #      - bash <(curl -s https://codecov.io/bash)
 
 python36:
-  extends: .base_tests
+#  extends: .base_tests
   image: 'python:3.6'
   stage: test
-  script: tox -e py36
+  script:
+    - python --version
+    - export POETRY_VERSION=1.1.4
+    - pip install "poetry==$POETRY_VERSION"
+    - poetry install --no-root
+    - tox -e py36
 
 python37:
   extends: .base_tests
