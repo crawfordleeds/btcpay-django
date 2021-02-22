@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from crawfish.models import BaseModel
 from django.conf import settings
 from btcpay import BTCPayClient as BTCPayClient_sdk
+from .app_settings import BTCPAYSERVER_HOST
 
 
 class BtcpayClient(BaseModel):
@@ -29,8 +30,8 @@ class BtcpayClient(BaseModel):
             ), "You must add a pairing_code to created a new BtcpayClient record"
             if not self.host:
                 assert (
-                    getattr(settings, "BTCPAYSERVER_HOST", None) is not None
-                ), "ADD BTCPAYSERVER_HOST to your settings or save() with non-None host"
+                    BTCPAYSERVER_HOST is not None
+                ), "ADD BTCPAYSERVER_HOST to your settings or pass `host` to the save() method."
                 client = BTCPayClient_sdk.create_client(
                     host=settings.BTCPAYSERVER_HOST, code=self.pairing_code
                 )
