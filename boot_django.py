@@ -1,6 +1,7 @@
 # File sets up the django environment, used by other scripts that need to
 # execute in django land
 import os
+
 import django
 from django.conf import settings
 

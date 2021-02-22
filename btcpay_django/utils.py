@@ -1,8 +1,10 @@
 import pickle
-from .models import BtcpayClient
-from django.conf import settings
 from importlib import import_module
+
+from django.conf import settings
+
 from .app_settings import BTCPAYSERVER_HOST
+from .models import BtcpayClient
 
 
 def get_btcpay_client(host=None):

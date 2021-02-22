@@ -1,9 +1,11 @@
 import pickle
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
+
+from btcpay import BTCPayClient as BTCPayClient_sdk
 from crawfish.models import BaseModel
 from django.conf import settings
-from btcpay import BTCPayClient as BTCPayClient_sdk
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from .app_settings import BTCPAYSERVER_HOST
 
 
